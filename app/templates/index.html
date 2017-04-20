@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+
+<script src="/static/js/admin.js"></script>
+
+<script>
+
+$(document).ready(function() {
+    {% for post in posts %}
+
+    setup_delete_restore_button('{{ post.id }}',
+                                $('#post_elem{{ post.id }}'),
+                                $('#delete_button{{ post.id }}'),
+                                $('#restore_button{{ post.id }}'));
+    setup_erase_button('{{ post.id }}',
+                       $('#post_elem{{ post.id }}'),
+                       $('#erase_button{{ post.id }}'));
+    {% if post.deleted %}
+        $('#delete_button{{ post.id }}').hide();
+    {% else %}
+        $('#restore_button{{ post.id }}').hide();
+    {% endif %}
+
+    {% endfor %}
+});
+
+</script>
+
+{% endblock %}
+
+{% block content %}
+
+{% if not posts %}
+<div class="w3-container card w3-card-8">
+    <p>No posts found.</p>
+</div>
+{% endif %}
+
+{% for post in posts %}
+
+{% if post.deleted %}
+<div class="w3-container card w3-card-8 deleted" id="post_elem{{ post.id }}">
+{% else %}
+<div class="w3-container card w3-card-8" id="post_elem{{ post.id }}">
+{% endif %}
+
+  {% if logged %}
+  <div class="w3-nav">
+    <a href="/post/edit/{{ post.id }}" class="material-icons">
+      <img src="/static/images/edit.png">  Edit</img>
+    </a>
+
+    <a id="restore_button{{ post.id }}" href="#" class="material-icons">
+      <img src="/static/images/restore.png">  Restore</img>
+    </a>
+
+    <a id="delete_button{{ post.id }}" href="#" class="material-icons">
+      <img src="/static/images/delete.png">  Delete</img>
+    </a>
+
+    <a id="erase_button{{ post.id }}" href="#" class="material-icons w3-right">
+      <img src="/static/images/close.png"></img>
+    </a>
+  </div>
+  {% endif %}
+
+  <div class="post_header{{ post.id }} post_header">
+    <a href="/post/show/{{ post.id }}">{{post.header|safe}}</a>
+  </div>
+  <div class="post_intro{{ post.id }} post_intro">{{post.intro|safe}}</div>
+
+</div>
+{% endfor %}
+
+{% endblock %}

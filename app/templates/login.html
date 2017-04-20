@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+
+    <title>idfumg blog</title>
+    <meta name="description" content="Super Simple WYSIWYG Editor on Bootstrap"/>
+    <meta name="author" content="https://github.com/HackerWins"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <link rel="stylesheet" href="/static/css/w3.css"/>
+    <link rel="stylesheet" href="/static/css/w3-theme-grey.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/slate/bootstrap.min.css"/>
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"/>
+
+    <link href="/static/css/summernote.css" rel="stylesheet"/>
+    <script src="/static/js/summernote.min.js"></script>
+  </head>
+
+  <script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+  </script>
+
+  <style>
+    @font-face {
+        font-family: "Clearly";
+        src: url(/static/fonts/PrintClearly_TT.ttf) format("truetype");
+    }
+
+    @font-face {
+        font-family: "Redressed";
+        src: url(/static/fonts/Redressed.ttf) format("truetype");
+    }
+
+    .clearly-font, h4 {
+        font-family:  "Clearly", Arial, Verdana, Tahoma;
+        font-size: 24px;
+    }
+
+    h3 {
+        font-family: "Redressed", Verdana, Tahoma;
+        font-weight: bold;
+        font-size: 36px;
+    }
+
+    h4 {
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .w3-topnav a:hover {
+        border-bottom: 3px solid black;
+    }
+
+    .time {
+        font-size: 18px;
+    }
+
+    .card {
+        margin-bottom: 40px;
+        text-align: justify;
+    }
+  </style>
+
+  <body class="clearly-font grey">
+
+    <form action="" method="post">
+      <p><input type=text name=username>
+      <p><input type=submit value=Login>
+    </form>
+
+  </body>
+</html>

@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/static/css/summernote.css"/>
+<script src="/static/js/summernote.min.js"></script>
+
+<script src="/static/js/admin.js"></script>
+
+<script>
+
+$(document).ready(function() {
+    var post_header = $('.post_header');
+    var post_text = $('.post_text');
+    var toolbar_elem = $('#post-toolbar');
+    var save_button = $('#submit');
+    var tip_elem = $('#post_saved');
+    var post_domain = $('.domain')
+    var post_intro = $('.post_intro')
+
+    display_wysiwyg(post_header);
+    display_wysiwyg(post_text);
+    display_wysiwyg(post_intro);
+    setup_toolbar(toolbar_elem, post_header, post_text, post_intro);
+
+    var id = null
+    {% if post %}
+        id='{{ post.id }}';
+    {% endif %}
+    setup_post_save_action(element=save_button,
+                           id=id,
+                           tip_elem=tip_elem,
+                           header=post_header,
+                           text=post_text,
+                           domain=post_domain,
+                           intro=post_intro);
+
+    if (!post_header.html())
+        post_header.html("Post title here");
+    if (!post_text.html())
+        post_text.html("Post text here");
+    if (!post_intro.html())
+        post_intro.html("Post intro here");
+    if (!post_domain.val())
+        post_domain.val("other");
+});
+
+</script>
+
+<style>
+
+header .w3-nav img {
+    margin-top: -13px;
+}
+
+#edit-buttons img {
+    display: inline-block;
+    margin: 0;
+}
+
+.domain {
+    background-color: #9e9e9e;
+    border: none;
+    text-align: center;
+}
+
+code {
+    margin-bottom: 6px;
+}
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<div>
+<div class="w3-container w3-center w3-card-8 card">
+
+  <div class="w3-nav" id="edit-buttons">
+    <a id="post-toolbar" href="#" class="material-icons">
+      <img src="/static/images/keyboard.png">  Toolbar</img>
+    </a>
+    <a id="submit" href="#" class="material-icons">
+      <img src="/static/images/floppy.png">  Save</img>
+    </a>
+    <span id="post_saved" style="display: none;">post saved</span>
+  </div>
+
+  <input class="domain" type="text" value="{{ post.domain | safe }}"></input>
+  <div class="post_header">{{ post.header | safe }}</div>
+  <div class="post_intro">{{ post.intro | safe }}</div>
+  <div class="post_text">{{ post.text | safe}}</div>
+
+</div>
+</div>
+
+{% endblock %}

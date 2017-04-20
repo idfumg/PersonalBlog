@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>idfumg blog</title>
+    <meta name="description" content="idfumg blog"/>
+    <meta name="author" content="Artem Pushkin"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/pojoaque.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+
+    <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="/static/js/main.js"></script>
+
+    {% block head_content %}{% endblock %}
+
+    <link rel="stylesheet" href="/static/css/w3.css"/>
+    <link rel="stylesheet" href="/static/css/main.css"/>
+  </head>
+
+  <body class="clearly-font grey">
+
+    <header class="w3-center">
+      <div id="nav" class="w3-card-8">
+        <nav class="w3-nav w3-padding">
+          <a href="/" class="material-icons w3-opennav">
+            <img src="/static/images/home.png">  Home</img>
+          </a>
+
+          <a href="/about" class="material-icons w3-opennav">
+            <img src="/static/images/account.png">  About</img>
+          </a>
+
+          {% if logged %}
+          <a href="/post/edit" class="material-icons w3-opennav">
+            <img src="/static/images/file-outline.png">  New</img>
+          </a>
+
+          <a href="/logout" class="material-icons w3-opennav">
+            <img src="/static/images/logout.png">  Logout</img>
+          </a>
+          {% endif %}
+
+          <a onclick="w3_open('#domains')" class="material-icons w3-opennav">
+            <img src="/static/images/menu.png"></img>
+          </a>
+        </nav>
+
+        <nav id="domains" class="w3-nav w3-center w3-padding" style="display: none;">
+          <div class="w3-third">
+            <a href="/index/python">Python</a>
+          </div>
+          <div class="w3-third">
+            <a href="/index/c++">C++</a>
+          </div>
+          <div class="w3-third">
+            <a href="/index/html/css">HTML/CSS</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="w3-row-padding w3-center">
+      {% block content %}{% endblock %}
+    </div>
+
+  </body>
+</html>

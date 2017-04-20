@@ -1,0 +1,87 @@
+@font-face {
+    font-family: "Clearly";
+    src: url(/static/fonts/PrintClearly_TT.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Redressed";
+    src: url(/static/fonts/Redressed.ttf) format("truetype");
+}
+
+.clearly-font {
+    font-family:  "Clearly", Arial, Verdana, Tahoma;
+    font-size: 24px;
+}
+
+.post_header a {
+    color: black;
+    text-decoration: none;
+}
+
+.post_header, .post_text {
+    text-align: left;
+}
+
+.w3-nav a:hover {
+    border-bottom: 3px solid black;
+}
+
+.card {
+    margin-bottom: 40px;
+    display: inline-block;
+}
+
+pre, code {
+    font-size: 15px;
+    line-height: 20px;
+    background: none;
+}
+
+#nav {
+    display: inline-block;
+}
+
+a.material-icons, a.material-icons img {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+#post_saved {
+    color: blue;
+}
+
+header {
+    margin-bottom: 35px;
+}
+
+.deleted {
+    opacity: 0.4;
+}
+
+#domains div a {
+    display: block;
+}
+
+@media screen and (max-width: 2000px) {
+    #nav, .card {
+        width: 63%;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    #nav, .card {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #nav, .card {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #nav, .card {
+        width: 95%;
+    }
+}
